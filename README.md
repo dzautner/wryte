@@ -486,6 +486,20 @@ The idea behind this is three-fold:
 
 ## Configuring Wryte
 
+### Including the caller in the log
+
+DO NOT use this in production. Finding the caller is a heavy process.
+
+By passing the `include_src` flag when instantiating the logger or by exporting `WRYTE_INCLUDE_SRC`, you can include the caller in your log message.
+
+e.g.
+
+```
+$ wryte info message
+2018-04-18T12:16:54.105146 - Wryte - INFO - message
+  src={'method': 'main', 'line': 740, 'file': '/home/nir0s/repos/nir0s/wryte/wryte.py'}
+```
+
 ### Using Environment Variables to configure logging handlers
 
 NOTE: This is WIP, so things may break / be broken.
